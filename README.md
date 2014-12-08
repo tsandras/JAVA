@@ -8,6 +8,8 @@ Attributs :
 - couleur {rouge, jaune, etc}
 - pattes {int}
 - nbs portée {int}
+- taux de mignoncite
+- taux de monstruausite
 - ArrayList<Mutation>
 -> Reproduction
 -> toString() : "Je suis un chat malade avec trois tentacule et je suis iriadié :)"
