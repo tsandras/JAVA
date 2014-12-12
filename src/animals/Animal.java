@@ -1,25 +1,25 @@
 package animals;
 
-public class Animal {
+public abstract class Animal {
 	
 	private String animalState;
 	private String mutationState;
-	private int eyes;
+	private int    eyes;
 	private String color;
-	private int legs;
-	private int litter;
-	private int mignoncite;
-	private int monstruausite;
+	private int    legs;
+	private int    litter;
+	private int    mignoncite;
+	private int    monstruausite;
 	
 	public Animal(String aSt, String mSt, int e, String c,
 			int lg, int lt, int mgct, int mstst) {
-		aSt = animalState;
-		mSt = mutationState;
-		e = eyes;
-		c = color;
-		lg = legs;
-		lt = litter;
-		mgct = mignoncite;
+		aSt   = animalState;
+		mSt   = mutationState;
+		e     = eyes;
+		c     = color;
+		lg    = legs;
+		lt    = litter;
+		mgct  = mignoncite;
 		mstst = monstruausite;
 	}
 
