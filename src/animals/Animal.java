@@ -24,19 +24,19 @@ public class Animal {
 	}
 
 	public String getaState() {
-		return aState;
+		return animalState;
 	}
 
 	public void setaState(String aState) {
-		this.aState = aState;
+		this.animalState = aState;
 	}
 
 	public String getmState() {
-		return mState;
+		return mutationState;
 	}
 
 	public void setmState(String mState) {
-		this.mState = mState;
+		this.mutationState = mState;
 	}
 
 	public int getEyes() {
