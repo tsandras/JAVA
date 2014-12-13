@@ -1,6 +1,6 @@
 package test;
 
-import ecologie.Mutation;
+import model.Mutation;
 
 public class Main {
 

@@ -1,7 +1,11 @@
-package animals;
+package model;
+
+import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Animal {
-	
+
+	private int    life;
 	private String animalState;
 	private String mutationState;
 	private int    eyes;
@@ -10,17 +14,21 @@ public abstract class Animal {
 	private int    litter;
 	private int    mignoncite;
 	private int    monstruausite;
-	
-	public Animal(String aSt, String mSt, int e, String c,
-			int lg, int lt, int mgct, int mstst) {
-		aSt   = animalState;
-		mSt   = mutationState;
-		e     = eyes;
-		c     = color;
-		lg    = legs;
-		lt    = litter;
-		mgct  = mignoncite;
-		mstst = monstruausite;
+
+	private List<Mutation> mutations = new ArrayList<Mutation>();
+
+	public Animal(int l, String aSt, String mSt, int e, String c,
+			int lg, int lt, int mgct, int mstst, List<Mutation> muts) {
+		life          = l;
+		animalState   = aSt;
+		mutationState = mSt;
+		eyes          = e;
+		color         = c;
+		legs          = lg;
+		litter        = lt;
+		mignoncite    = mgct;
+		monstruausite = mstst;
+		mutations     = muts;
 	}
 
 	public String getaState() {
@@ -90,6 +98,22 @@ public abstract class Animal {
 	public String toString() {
 		return "Je suis un animal " + this.animalState + ", j'ai " + this.legs + "pattes, " + this.eyes +
 				" yeux et je suis " + this.mutationState + " :)";
+	}
+
+	public int getLife() {
+		return life;
+	}
+
+	public void setLife(int life) {
+		this.life = life;
+	}
+
+	public List<Mutation> getMutations() {
+		return mutations;
+	}
+
+	public void setMutations(List<Mutation> mutations) {
+		this.mutations = mutations;
 	}
 
 }
