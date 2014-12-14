@@ -35,6 +35,7 @@ public abstract class Animal {
 		return animalState;
 	}
 
+//	on a qu'a dire qu'on a pour l'instant l'etat "Bonne sante", "Malade", "Etat critique"
 	public void setaState(String aState) {
 		this.animalState = aState;
 	}
@@ -43,10 +44,16 @@ public abstract class Animal {
 		return mutationState;
 	}
 
+//	temporairement : Etat "Cool", "Etrange creature", "Monstre", "Cthulhesque" 
 	public void setmState(String mState) {
 		this.mutationState = mState;
 	}
 
+//	Quand il y a une modification qui peut changer l'etat..
+	public void calculateStates() {
+		// To do
+	}
+	
 	public int getEyes() {
 		return eyes;
 	}
@@ -114,6 +121,10 @@ public abstract class Animal {
 
 	public void setMutations(List<Mutation> mutations) {
 		this.mutations = mutations;
+	}
+	
+	public void addMutation(Mutation mutation) {
+		this.mutations.add(mutation);
 	}
 
 }
