@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Batrachian extends Animal {
 
-	public Batrachian(int l, String aSt, String mSt, int e, String c, int lg,
+	public Batrachian(int l, String mSt, int e, String c, int lg,
 			int mgct, int mstst, List<Mutation> muts) {
-		super(l, aSt, mSt, e, c, lg, mgct, mstst, muts);
+		super(l, mSt, e, c, lg, mgct, mstst, muts);
 	}
 	
 	public String toString() {
