@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Random;
+import utils.RandInt;
 
 public class Radiation extends Pollution {
 	
@@ -21,13 +21,8 @@ public class Radiation extends Pollution {
 	
 	public void irradiation() {
 //		Plus le niveau de danger est important plus l'animal peut subir des mutations dangeureuses.
-		int tmp = randInt(1, super.getDangerLevel());
+		int tmp = RandInt.getRandInt(1, super.getDangerLevel());
 		Mutation m = new Mutation(tmp);
 		this.irradiatedAnimal.diagnostic(m);
-	}
-	
-	private int randInt(int min, int max) {
-	    Random rand = new Random();
-	    return rand.nextInt((max - min) + 1) + min;
 	}
 }
