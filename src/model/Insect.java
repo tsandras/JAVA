@@ -6,9 +6,9 @@ public class Insect extends Animal {
 
 	private int wings;
 
-	public Insect(int l, String aSt, String mSt, int e, String c, int lg,
+	public Insect(int l, String mSt, int e, String c, int lg,
 			int mgct, int mstst, List<Mutation> muts, int w) {
-		super(l, aSt, mSt, e, c, lg, mgct, mstst, muts);
+		super(l, mSt, e, c, lg, mgct, mstst, muts);
 		wings = w;
 	}
 

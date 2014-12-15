@@ -10,7 +10,7 @@ import state.IStateHealth;
 public abstract class Animal implements IStateHealth {
 
 	private int    life;
-	private IStateHealth animalState;
+	private EAnimalState animalState;
 	private String mutationState;
 	private int    eyes;
 	private String color;
@@ -36,7 +36,7 @@ public abstract class Animal implements IStateHealth {
 	public Animal(int l, String mSt, int e, String c,
 			int lg, int mgct, int mstst, List<Mutation> muts) {
 		life          = l;
-		animalState   = getState(EAnimalState.GOOD_HEALTH);
+		animalState   = EAnimalState.GOOD_HEALTH;
 		mutationState = mSt;
 		eyes          = e;
 		color         = c;
@@ -46,12 +46,15 @@ public abstract class Animal implements IStateHealth {
 		mutations     = muts;
 	}
 
-	public IStateHealth getAnimalState() {
+	public EAnimalState getState()							{return this.animalState;}
+	public void setState(EAnimalState state)					{this.animalState = state;}
+	
+	public EAnimalState getAnimalState() {
 		return animalState;
 	}
 
 //	on a qu'a dire qu'on a pour l'instant l'etat "Bonne sante", "Malade", "Etat critique", "Mort"
-	public void setAnimalState(IStateHealth aState) {
+	public void setAnimalState(EAnimalState aState) {
 		this.animalState = aState;
 	}
 
@@ -76,7 +79,7 @@ public abstract class Animal implements IStateHealth {
 //		To do : logic for state machine
 		attributesUpdate(m);
 //		On commence par animalState
-		AnimalStateMachine.changeStep(this.animalState);
+		AnimalStateMachine.changeStep(this);
 		if (this.mutationState != MUTATIONSTATE[0] && this.monstruausite > 3) {
 			this.mutationState = MUTATIONSTATE[0];
 		}
