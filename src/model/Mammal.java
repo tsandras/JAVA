@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Mammal extends Animal implements IHealing {
 	
-	public Mammal(int l, String aSt, String mSt, int e, String c, int lg, int lt,
+	public Mammal(int l, String aSt, String mSt, int e, String c, int lg,
 			int mgct, int mstst, List<Mutation> muts) {
-		super(l, aSt, mSt, e, c, lg, lt, mgct, mstst, muts);
+		super(l, aSt, mSt, e, c, lg, mgct, mstst, muts);
 	}
 	
 	public int healLife() {

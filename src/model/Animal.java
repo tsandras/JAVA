@@ -3,55 +3,93 @@ package model;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class Animal {
+import state.AnimalStateMachine;
+import state.EAnimalState;
+import state.IStateHealth;
+
+public abstract class Animal implements IStateHealth {
 
 	private int    life;
-	private String animalState;
+	private IStateHealth animalState;
 	private String mutationState;
 	private int    eyes;
 	private String color;
 	private int    legs;
-	private int    litter;
 	private int    mignoncite;
 	private int    monstruausite;
+	
+//	private static final String[] ANIMALSTATE = new String[]{
+//		"Bonne sante", 
+//		"Malade", 
+//		"Etat critique", 
+//		"Mort"};
+	
+	private static final String[] MUTATIONSTATE = new String[]{
+		"Normal", 
+		"Etrange creature", 
+		"Monstre", 
+		"Cthulhesque",
+		"Kawahi"};
 
 	private List<Mutation> mutations = new ArrayList<Mutation>();
 
-	public Animal(int l, String aSt, String mSt, int e, String c,
-			int lg, int lt, int mgct, int mstst, List<Mutation> muts) {
+	public Animal(int l, String mSt, int e, String c,
+			int lg, int mgct, int mstst, List<Mutation> muts) {
 		life          = l;
-		animalState   = aSt;
+		animalState   = getState(EAnimalState.GOOD_HEALTH);
 		mutationState = mSt;
 		eyes          = e;
 		color         = c;
 		legs          = lg;
-		litter        = lt;
 		mignoncite    = mgct;
 		monstruausite = mstst;
 		mutations     = muts;
 	}
 
-	public String getaState() {
+	public IStateHealth getAnimalState() {
 		return animalState;
 	}
 
-//	on a qu'a dire qu'on a pour l'instant l'etat "Bonne sante", "Malade", "Etat critique"
-	public void setaState(String aState) {
+//	on a qu'a dire qu'on a pour l'instant l'etat "Bonne sante", "Malade", "Etat critique", "Mort"
+	public void setAnimalState(IStateHealth aState) {
 		this.animalState = aState;
 	}
 
-	public String getmState() {
+	public String getMutationState() {
 		return mutationState;
 	}
 
-//	temporairement : Etat "Cool", "Etrange creature", "Monstre", "Cthulhesque" 
-	public void setmState(String mState) {
+	
+//	temporairement : Etat "Parfait", "Cool", "Etrange creature", "Monstre", "Cthulhesque" 
+	public void setMutationState(String mState) {
 		this.mutationState = mState;
+		
 	}
 
+	public void diagnostic(Mutation m) {
+		calculateStates(m);
+		addMutation(m);
+	}
+	
 //	Quand il y a une modification qui peut changer l'etat..
-	public void calculateStates() {
-		// To do
+	private void calculateStates(Mutation m) {
+//		To do : logic for state machine
+		attributesUpdate(m);
+//		On commence par animalState
+		AnimalStateMachine.changeStep(this.animalState);
+		if (this.mutationState != MUTATIONSTATE[0] && this.monstruausite > 3) {
+			this.mutationState = MUTATIONSTATE[0];
+		}
+		if (this.mutationState != MUTATIONSTATE[0] && this.mignoncite >= 9 
+				&& this.monstruausite >= 3 && this.monstruausite <= 6) {
+			this.mutationState = MUTATIONSTATE[4];
+		}
+	}
+	
+	private void attributesUpdate(Mutation m) {
+		this.life = this.life + m.getMutationLife();
+		this.mignoncite = this.mignoncite + m.getMutationMignon();
+		this.monstruausite = this.monstruausite + m.getMutationMonst();
 	}
 	
 	public int getEyes() {
@@ -76,14 +114,6 @@ public abstract class Animal {
 
 	public void setLegs(int legs) {
 		this.legs = legs;
-	}
-
-	public int getLitter() {
-		return litter;
-	}
-
-	public void setLitter(int litter) {
-		this.litter = litter;
 	}
 
 	public int getMignoncite() {

@@ -2,17 +2,17 @@ package model;
 
 public abstract class Pollution {
 //	levelDanger between 1 and 5.
-	private int levelDanger;
+	private int dangerLevel;
 	
 	public Pollution(int ld) {
-		this.levelDanger = ld;
+		this.dangerLevel = ld;
 	}
 	
-	public int getlDanger() {
-		return this.levelDanger;
+	public int getDangerLevel() {
+		return this.dangerLevel;
 	}
 	
-	public void setlDanger(int ld) {
-		this.levelDanger = ld;
+	public void setDangerLevel(int ld) {
+		this.dangerLevel = ld;
 	}
 }

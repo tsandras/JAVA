@@ -21,9 +21,9 @@ public class Radiation extends Pollution {
 	
 	public void irradiation() {
 //		Plus le niveau de danger est important plus l'animal peut subir des mutations dangeureuses.
-		int tmp = randInt(1, super.getlDanger());
+		int tmp = randInt(1, super.getDangerLevel());
 		Mutation m = new Mutation(tmp);
-		this.irradiatedAnimal.addMutation(m);
+		this.irradiatedAnimal.diagnostic(m);
 	}
 	
 	private int randInt(int min, int max) {
