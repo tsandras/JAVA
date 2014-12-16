@@ -6,8 +6,8 @@ public class Radiation extends Pollution {
 	
 	private Animal irradiatedAnimal;
 	
-	public Radiation(int ld, Animal a) {
-		super(ld);
+	public Radiation(int ld, int h, Animal a) {
+		super(ld, h);
 		irradiatedAnimal = a;
 	}
 	
@@ -20,9 +20,8 @@ public class Radiation extends Pollution {
 	}
 	
 	public void irradiation() {
-//		Plus le niveau de danger est important plus l'animal peut subir des mutations dangeureuses.
 		int tmp = RandInt.getRandInt(1, super.getDangerLevel());
 		Mutation m = new Mutation(tmp);
-		this.irradiatedAnimal.diagnostic(m);
+		this.irradiatedAnimal.diagnostic(this, m);
 	}
 }
