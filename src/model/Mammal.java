@@ -1,12 +1,9 @@
 package model;
 
-import java.util.List;
-
 public class Mammal extends Animal implements IHealing {
 	
-	public Mammal(int l, String mSt, int e, String c, int lg,
-			int mgct, int mstst, List<Mutation> muts) {
-		super(l, mSt, e, c, lg, mgct, mstst, muts);
+	public Mammal(int l, int e, String c, int lg, int mgct, int mstst) {
+		super(l, e, c, lg, mgct, mstst);
 	}
 	
 	public int healLife() {

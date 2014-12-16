@@ -2,21 +2,11 @@ package model;
 
 public class Contamination extends Pollution {
 	
-	private Animal contaminatedAnimal;
-	
-	public Contamination(int ld, int h, Animal a) {
+	public Contamination(int ld, int h) {
 		super(ld, h);
 	}
 	
-	public Animal getcAnimal() {
-		return this.contaminatedAnimal;
-	}
-	
-	public void setcAnimal(Animal a) {
-		this.contaminatedAnimal = a;
-	}
-	
-	public void contamination() {
-		this.contaminatedAnimal.diagnostic(this);
+	public void contamination(Animal contaminatedAnimal) {
+		contaminatedAnimal.diagnostic(this);
 	}
 }
