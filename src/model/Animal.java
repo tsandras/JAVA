@@ -18,11 +18,11 @@ public abstract class Animal implements IStateHealth {
 	private int    mignoncite;
 	private int    monstruausite;
 	
-//	private static final String[] ANIMALSTATE = new String[]{
-//		"Bonne sante", 
-//		"Malade", 
-//		"Etat critique", 
-//		"Mort"};
+	private static final String[] ANIMALSTATE = new String[]{
+		"Bonne sante", 
+		"Malade", 
+		"Etat critique", 
+		"Mort"};
 	
 	private static final String[] MUTATIONSTATE = new String[]{
 		"Normal", 
@@ -53,7 +53,6 @@ public abstract class Animal implements IStateHealth {
 		return animalState;
 	}
 
-//	on a qu'a dire qu'on a pour l'instant l'etat "Bonne sante", "Malade", "Etat critique", "Mort"
 	public void setAnimalState(EAnimalState aState) {
 		this.animalState = aState;
 	}
@@ -61,38 +60,23 @@ public abstract class Animal implements IStateHealth {
 	public String getMutationState() {
 		return mutationState;
 	}
-
-	
-//	temporairement : Etat "Parfait", "Cool", "Etrange creature", "Monstre", "Cthulhesque" 
+ 
 	public void setMutationState(String mState) {
 		this.mutationState = mState;
 		
 	}
 
-	public void diagnostic(Mutation m) {
-		calculateStates(m);
-		addMutation(m);
+	public void diagnostic(Pollution p) {
+		this.life = this.life + p.getHurt();
+		calculateStateAnimal();
 	}
 	
-//	Quand il y a une modification qui peut changer l'etat..
-	private void calculateStates(Mutation m) {
-//		To do : logic for state machine
+	public void diagnostic(Pollution p, Mutation m) {
+		this.life = this.life + p.getHurt();
 		attributesUpdate(m);
-//		On commence par animalState
-		AnimalStateMachine.changeStep(this);
-		if (this.mutationState != MUTATIONSTATE[0] && this.monstruausite > 3) {
-			this.mutationState = MUTATIONSTATE[0];
-		}
-		if (this.mutationState != MUTATIONSTATE[0] && this.mignoncite >= 9 
-				&& this.monstruausite >= 3 && this.monstruausite <= 6) {
-			this.mutationState = MUTATIONSTATE[4];
-		}
-	}
-	
-	private void attributesUpdate(Mutation m) {
-		this.life = this.life + m.getMutationLife();
-		this.mignoncite = this.mignoncite + m.getMutationMignon();
-		this.monstruausite = this.monstruausite + m.getMutationMonst();
+		calculateStateAnimal();
+		calculateMutationState(m);
+		addMutation(m);
 	}
 	
 	public int getEyes() {
@@ -159,5 +143,46 @@ public abstract class Animal implements IStateHealth {
 	public void addMutation(Mutation mutation) {
 		this.mutations.add(mutation);
 	}
-
+	
+	private void attributesUpdate(Mutation m) {
+		this.mignoncite = this.mignoncite + m.getMutationMignon();
+		this.monstruausite = this.monstruausite + m.getMutationMonst();
+	}
+	
+	private void calculateStateAnimal() {
+		if (this.life < 8) {
+			AnimalStateMachine.changeStep(this);
+		}
+		if (this.animalState.getState() != ANIMALSTATE[3] && this.life <= 0) {
+			this.animalState = EAnimalState.DEAD;
+		}
+	}
+	
+	private void calculateMutationState(Mutation m) {
+		if (this.mutationState == MUTATIONSTATE[0]) {
+			manageMutationState0(m);
+		} else if (this.mutationState == MUTATIONSTATE[1]) { 
+			manageMutationState1(m);
+		} else if (this.mutationState == MUTATIONSTATE[2]) {
+			if (m.getMutationMonst() > 2 && this.monstruausite > 8) {
+				this.mutationState = MUTATIONSTATE[3];
+			}
+		}
+	}
+	
+	private void manageMutationState0(Mutation m) {
+		if (m.getMutationMonst() > 2 && this.monstruausite > 5) {
+			this.mutationState = MUTATIONSTATE[2];
+		} else if (m.getMutationMonst() > 2 && this.monstruausite > 2) {
+			this.mutationState = MUTATIONSTATE[1];
+		}
+	}
+	
+	private void manageMutationState1(Mutation m) {
+		if (m.getMutationMonst() > 2 && this.monstruausite > 8) {
+			this.mutationState = MUTATIONSTATE[3];
+		} else if (m.getMutationMonst() > 2 && this.monstruausite < 6) {
+			this.mutationState = MUTATIONSTATE[4];
+		}
+	}
 }
