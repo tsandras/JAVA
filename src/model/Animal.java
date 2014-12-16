@@ -33,17 +33,15 @@ public abstract class Animal implements IStateHealth {
 
 	private List<Mutation> mutations = new ArrayList<Mutation>();
 
-	public Animal(int l, String mSt, int e, String c,
-			int lg, int mgct, int mstst, List<Mutation> muts) {
+	public Animal(int l, int e, String c, int lg, int mgct, int mstst) {
 		life          = l;
 		animalState   = EAnimalState.GOOD_HEALTH;
-		mutationState = mSt;
+		mutationState = MUTATIONSTATE[0];
 		eyes          = e;
 		color         = c;
 		legs          = lg;
 		mignoncite    = mgct;
 		monstruausite = mstst;
-		mutations     = muts;
 	}
 
 	public EAnimalState getState()							{return this.animalState;}
