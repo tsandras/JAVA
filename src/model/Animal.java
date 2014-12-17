@@ -83,7 +83,7 @@ public abstract class Animal implements IStateHealth {
 
 	public String showMutations() {
 		Iterator<Mutation> iter = this.mutations.iterator();
-		String out = "Cette animal a comme mutation :\n";
+		String out = "Cet animal a comme mutation :\n";
 		while (iter.hasNext()) {
 			Mutation m = iter.next();
 			out += m.toString()+"\n";
