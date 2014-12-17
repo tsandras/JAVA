@@ -9,13 +9,9 @@ public class Insect extends Animal {
 		wings = w;
 	}
 
-	public int getWings() {
-		return wings;
-	}
+	public int getWings() { return wings; }
 
-	public void setWings(int wings) {
-		this.wings = wings;
-	}
+	public void setWings(int wings) { this.wings = wings; }
 
 	public String toString() {
 		return "bzzz ! " + super.toString();
