@@ -2,10 +2,10 @@ package state;
 
 public enum EAnimalState
 {
-	DEAD("Mort", null),
-	BAD_HEALTH("Etat critique", DEAD),
-	MEDIUM_HEALTH("Malade", BAD_HEALTH),
-    GOOD_HEALTH("Bonne sante", MEDIUM_HEALTH);   
+	DEAD("mort", null),
+	BAD_HEALTH("en etat critique", DEAD),
+	MEDIUM_HEALTH("malade", BAD_HEALTH),
+    GOOD_HEALTH("en bonne sante", MEDIUM_HEALTH);
     
     private EAnimalState         nextStepState;
     
@@ -13,7 +13,7 @@ public enum EAnimalState
     
     private EAnimalState(String state, EAnimalState nextStepState)
     {
-        this.state             = state;
+        this.state            = state;
         this.nextStepState    = nextStepState;
     }
 
