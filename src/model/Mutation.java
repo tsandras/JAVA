@@ -10,8 +10,9 @@ public class Mutation {
 
 	private static final String[] MUTATIONS = new String[]{
 		"Grandit;2;-1;est beaucoup plus grand!", 
-		"Luminescence;2;2;est luminescent", 
-		"Tentacule;3;1;a une tentacule!", 
+		"Luminescence;2;4;est luminescent", 
+		"Tentacule;3;2;a une tentacule!", 
+		"Poil rose;2;5;a des poiles roses",
 		"Cancer;4;-4;ne se sent pas tres bien..",
 		"Liquefaction;6;-5;a les cellules qui commencent a se liquifier!"};
 	
@@ -40,7 +41,7 @@ public class Mutation {
 	}
 	
 	public String toString() {
-		return "Je suis une mutation de type "+this.type+" et mon nom est "+this.name+".`"
+		return "Je suis une mutation de type "+this.type+" et mon nom est "+this.name+"."
 				+ "Je vais faire perdre/gagner "+this.mutationMonst+" en monstruausite."
 				+ "Je vais faire perdre/gagner "+this.mutationMignon+" en mignoncite.";
 	}

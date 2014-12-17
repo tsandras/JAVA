@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import state.AnimalStateMachine;
 import state.EAnimalState;
@@ -120,6 +121,16 @@ public abstract class Animal implements IStateHealth {
 	public String toString() {
 		return "Je suis un animal " + this.animalState + ", j'ai " + this.legs + "pattes, " + this.eyes +
 				" yeux et je suis " + this.mutationState + " :)";
+	}
+	
+	public String showMutations() {
+		Iterator<Mutation> iter = this.mutations.iterator();
+		String out = "Cette animal a comme mutation :\n";
+		while (iter.hasNext()) {
+			Mutation m = iter.next();
+			out += m.toString()+"\n";
+		}
+		return out;
 	}
 
 	public int getLife() {
