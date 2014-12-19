@@ -1,5 +1,7 @@
 package test;
 
+import org.junit.Test;
+
 import model.Contamination;
 import model.Radiation;
 import model.Mammal;
@@ -8,43 +10,64 @@ import model.Insect;
 
 public class Main {
 
-	public static void main(String[] args) {
+	@Test public static void main(String[] args) {
+		//////////////// Test 1 ////////////////
 		System.out.println("Test de l'abeille qui se balade dans une cuisine :");
-		Insect abeille = new Insect(10, 2, "Maya", 4, 10, 0, 2);
+		Insect abeille = new Insect(10, 2, "noirs", 4, 10, 0, 2);
 		System.out.println(abeille.toString());
-		Contamination produitMenager = new Contamination(2, -3);
+		
+		Contamination produitMenager = new Contamination(2, -3, "produit menager");
 		produitMenager.contamination(abeille);
+		System.out.print("Contamination par : ");
+		System.out.println(produitMenager.toString());
 		System.out.println(abeille.toString());
-		Radiation microOnde = new Radiation(2, -1);
-		microOnde.irradiation(abeille);
+		
+		Radiation microOndes = new Radiation(2, -1, "micro-ondes");
+		microOndes.irradiation(abeille);
+		System.out.print("Contamination par : ");
+		System.out.println(microOndes.toString());
 		System.out.println(abeille.toString());
+		
 		System.out.println(abeille.showMutations());
 
+		//////////////// Test 2 ////////////////
 		System.out.println("Test de la grenouille dans une centrale nucleaire :");
-		Batrachian grenouille = new Batrachian(12, 2, "Prince", 4, 10, 0);
+		Batrachian grenouille = new Batrachian(12, 2, "verts", 4, 10, 0);
 		System.out.println(grenouille.toString());
-		Radiation rayonGamma = new Radiation(5, -1);
+		
+		Radiation rayonGamma = new Radiation(5, -1, "rayon gamma");
 		rayonGamma.irradiation(grenouille);
 		System.out.println(grenouille.toString());
-		Radiation rayonnementCosmique = new Radiation(3, -2);
+		
+		Radiation rayonnementCosmique = new Radiation(3, -2, "rayonnement cosmique");
 		rayonnementCosmique.irradiation(grenouille);
 		System.out.println(grenouille.toString());
-		Radiation RayonAlpha = new Radiation(5, -2);
+		
+		Radiation RayonAlpha = new Radiation(5, -2, "rayon alpha");
 		RayonAlpha.irradiation(grenouille);
 		System.out.println(grenouille.toString());
+		
+		System.out.println(grenouille.showPollutions());
 		System.out.println(grenouille.showMutations());
-
+		
+		//////////////// Test 3 ////////////////
 		System.out.println("Un chaton qui risque de devenir tout mignon :");
-		Mammal chaton3 = new Mammal(12, 2, "Blues", 4, 10, 0);
-		System.out.println(chaton3.toString());
-		Radiation croquetteMagique = new Radiation(3, -1);
-		croquetteMagique.irradiation(chaton3);
-		System.out.println(chaton3.toString());
-		Radiation laitJaponais = new Radiation(3, -2);
-		laitJaponais.irradiation(chaton3);
-		System.out.println(chaton3.toString());
-		Radiation croquetteMagique2 = new Radiation(3, -1);
-		croquetteMagique2.irradiation(chaton3);
-		System.out.println(chaton3.showMutations());
+		Mammal chaton = new Mammal(12, 2, "bleux", 4, 10, 0);
+		System.out.println(chaton.toString());
+		
+		Radiation croquetteMagique = new Radiation(3, -1, "croquette magique");
+		croquetteMagique.irradiation(chaton);
+		System.out.println(chaton.toString());
+		
+		Radiation laitJaponais = new Radiation(3, -2, "lait japonais");
+		laitJaponais.irradiation(chaton);
+		System.out.println(chaton.toString());
+		
+		Radiation croquetteMagique2 = new Radiation(3, -1, "autre croquette magique");
+		croquetteMagique2.irradiation(chaton);
+		
+		System.out.println(chaton.showPollutions());
+		System.out.println(chaton.showMutations());
+		
 	}
 }

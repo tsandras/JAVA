@@ -28,6 +28,7 @@ public abstract class Animal implements IStateHealth {
 	};
 
 	private List<Mutation> mutations = new ArrayList<Mutation>();
+	private List<Pollution> pollutions = new ArrayList<Pollution>();
 
 	public Animal(int l, int e, String c, int lg, int mgct, int mstst) {
 		life          = l;
@@ -40,32 +41,35 @@ public abstract class Animal implements IStateHealth {
 		monstruausite = mstst;
 	}
 
-	public EAnimalState getState()       { return this.animalState; }
-	public EAnimalState getAnimalState() { return animalState; }
-	public String getMutationState()     { return mutationState; }
-	public List<Mutation> getMutations() { return mutations; }
-	public int getLife()                 { return life; }
-	public int getEyes()                 { return eyes; }
-	public String getColor()             { return color; }
-	public int getLegs()                 { return legs; }
-	public int getMignoncite()           { return mignoncite; }
-	public int getMonstruausite()        { return monstruausite; }
+	public EAnimalState getState()         { return this.animalState; }
+	public EAnimalState getAnimalState()   { return animalState; }
+	public String getMutationState()       { return mutationState; }
+	public List<Mutation> getMutations()   { return mutations; }
+	public List<Pollution> getPollutions() { return pollutions; }
+	public int getLife()                   { return life; }
+	public int getEyes()                   { return eyes; }
+	public String getColor()               { return color; }
+	public int getLegs()                   { return legs; }
+	public int getMignoncite()             { return mignoncite; }
+	public int getMonstruausite()          { return monstruausite; }
 
 
-	public void setState(EAnimalState state)           { this.animalState = state; }
-	public void setAnimalState(EAnimalState aState)    { this.animalState = aState; }
-	public void setMutationState(String mState)        { this.mutationState = mState; }
-	public void setLife(int life)                      { this.life = life; }
-	public void setMutations(List<Mutation> mutations) { this.mutations = mutations; }
-	public void setEyes(int eyes)                      { this.eyes = eyes; }
-	public void setColor(String color)                 { this.color = color; }
-	public void setLegs(int legs)                      { this.legs = legs; }
-	public void setMignoncite(int mignoncite)          { this.mignoncite = mignoncite; }
-	public void setMonstruausite(int monstruausite)    { this.monstruausite = monstruausite; }
-
+	public void setState(EAnimalState state)              { this.animalState = state; }
+	public void setAnimalState(EAnimalState aState)       { this.animalState = aState; }
+	public void setMutationState(String mState)           { this.mutationState = mState; }
+	public void setLife(int life)                         { this.life = life; }
+	public void setMutations(List<Mutation> mutations)    { this.mutations = mutations; }
+	public void setEyes(int eyes)                         { this.eyes = eyes; }
+	public void setColor(String color)                    { this.color = color; }
+	public void setLegs(int legs)                         { this.legs = legs; }
+	public void setMignoncite(int mignoncite)             { this.mignoncite = mignoncite; }
+	public void setMonstruausite(int monstruausite)       { this.monstruausite = monstruausite; }
+	public void setPollutions(List<Pollution> pollutions) { this.pollutions = pollutions; }
+	
 	public void diagnostic(Pollution p) {
 		this.life = this.life + p.getHurt();
 		calculateStateAnimal();
+		addPollution(p);
 	}
 
 	public void diagnostic(Pollution p, Mutation m) {
@@ -74,6 +78,7 @@ public abstract class Animal implements IStateHealth {
 		calculateStateAnimal();
 		calculateMutationState(m);
 		addMutation(m);
+		addPollution(p);
 	}
 
 	public String toString() {
@@ -91,8 +96,23 @@ public abstract class Animal implements IStateHealth {
 		return out;
 	}
 
+	public String showPollutions() {
+		Iterator<Pollution> iter = this.pollutions.iterator();
+		String out = "Contamination par : ";
+		while (iter.hasNext()) {
+			Pollution p = iter.next();
+			out += p.toString()+", ";
+		}
+		out = out.substring(0, out.length() -2);
+		return out;
+	}
+	
 	public void addMutation(Mutation mutation) {
 		this.mutations.add(mutation);
+	}
+	
+	public void addPollution(Pollution pollution) {
+		this.pollutions.add(pollution);
 	}
 
 	private void attributesUpdate(Mutation m) {
@@ -136,4 +156,5 @@ public abstract class Animal implements IStateHealth {
 			this.mutationState = MUTATIONSTATE[4];
 		}
 	}
+
 }
