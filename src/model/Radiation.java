@@ -8,6 +8,7 @@ public class Radiation extends Pollution {
 		super(ld, h, n);
 	}
 	
+	// les mutations sont choisies aleatoirement
 	public void irradiation(Animal irradiatedAnimal) {
 		int tmp = RandInt.getRandInt(0, super.getDangerLevel());
 		Mutation m = new Mutation(tmp);
