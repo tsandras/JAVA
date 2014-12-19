@@ -82,8 +82,12 @@ public abstract class Animal implements IStateHealth {
 	}
 
 	public String toString() {
-		return "Je suis un animal " + this.animalState.getState() + ", j'ai " + this.legs + " pattes, " + this.eyes +
-				" yeux et je suis " + this.mutationState + " :)";
+		String str = "Je suis un animal " + this.animalState.getState() + ", j'ai " + this.legs + " pattes, " + this.eyes;
+		str += " yeux et je suis " + this.mutationState + "\n";
+		str += "Vie : " + getLife() + "\n";
+		str += "Mignoncite : " + getMignoncite() + "\n";
+		str += "Monstruausite : " + getMonstruausite() + "\n";
+		return str;
 	}
 
 	public String showMutations() {

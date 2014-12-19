@@ -52,25 +52,28 @@ public class Main {
 		
 		//////////////// Test 3 ////////////////
 		System.out.println("Un chaton qui risque de devenir tout mignon :");
-		Mammal chaton = new Mammal(12, 2, "bleux", 4, 10, 0);
+		Mammal chaton = new Mammal(12, 2, "bleux", 4, 16, 0);
 		System.out.println(chaton.toString());
 		
-		Radiation croquetteMagique = new Radiation(3, -1, "croquette magique");
+		Radiation croquetteMagique = new Radiation(3, -3, "croquette magique");
 		croquetteMagique.irradiation(chaton);
 		System.out.println(chaton.toString());
 		
-		Radiation laitJaponais = new Radiation(3, -2, "lait japonais");
+		Radiation laitJaponais = new Radiation(3, -3, "lait japonais");
 		laitJaponais.irradiation(chaton);
 		System.out.println(chaton.toString());
 		
 		Radiation croquetteMagique2 = new Radiation(3, -1, "autre croquette magique");
 		croquetteMagique2.irradiation(chaton);
-		
+		System.out.println(chaton.toString());
+		System.out.println("Points de vie : " + chaton.getLife() + ", points de mignoncite : " + chaton.getMignoncite());
+		chaton.meow();
+		System.out.println("Points de vie : " + chaton.getLife() + ", points de mignoncite : " + chaton.getMignoncite());
 		System.out.println(chaton.showPollutions());
 		System.out.println(chaton.showMutations());
 		
 		//////////////// Test 4 ////////////////
-		System.out.println("Un chien qui va mourrir");
+		System.out.println("Un chien qui va mourir");
 		Mammal chien = new Mammal(10, 2, "noir", 4, 4, 0);
 		System.out.println(chien.toString());
 		
