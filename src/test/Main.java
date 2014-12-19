@@ -69,5 +69,21 @@ public class Main {
 		System.out.println(chaton.showPollutions());
 		System.out.println(chaton.showMutations());
 		
+		//////////////// Test 4 ////////////////
+		System.out.println("Un chien qui va mourrir");
+		Mammal chien = new Mammal(10, 2, "noir", 4, 4, 0);
+		System.out.println(chien.toString());
+		
+		Contamination gamelleArsenique = new Contamination(3, -4, "arsenique");
+		gamelleArsenique.contamination(chien);
+		System.out.print("Contamination par : ");
+		System.out.println(gamelleArsenique.toString());
+		System.out.println(chien.toString());
+
+		Contamination roundup = new Contamination(3, -6, "roundup");
+		roundup.contamination(chien);
+		System.out.print("Contamination par : ");
+		System.out.println(roundup.toString());
+		System.out.println(chien.toString());
 	}
 }
