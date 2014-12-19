@@ -4,8 +4,8 @@ import utils.RandInt;
 
 public class Radiation extends Pollution {
 	
-	public Radiation(int ld, int h) {
-		super(ld, h);
+	public Radiation(int ld, int h, String n) {
+		super(ld, h, n);
 	}
 	
 	public void irradiation(Animal irradiatedAnimal) {
